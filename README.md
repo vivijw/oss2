@@ -33,7 +33,7 @@ we have worked on:
 ************************************************************************************************************
 Modification on controllers we have done:
 
-1. pg_users_controller
+pg_users_controller
 The class PgUsersController is inherited from UsersController. There are two methods "create" and "remove_user" 
 in pg_users_controller.
 
@@ -43,7 +43,7 @@ Add Instructor, and Add Student functions. The parent field identifies the entit
  an instructor) that created this entry (e.g., a student).
 
 ------------------------------------------------------------------------------------------------------------   
-2. popup_controller
+popup_controller
 There are four methods, team_users_popup, participants_popup, view_review_scores_popup, and reviewer_details 
 popup. Each one of them has its own view page. 
 
@@ -55,14 +55,14 @@ In popup_controller.rb, we found that there are code duplications in team_users_
 We merge the code into one function, and make two methods call the same function.
 
 ------------------------------------------------------------------------------------------------------------ 
-3. profile_controller
+profile_controller
 There are two methods in profile_controller, "edit" and "update". They are called by view/profile/edit.html.erb
 and can be viewed by http://localhost:3000/profile/edit.
 
 Everything looks fine. We didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
-4. publishing_controller
+publishing_controller
 There are four methods in publishing_controller, view, set_publish_permission, update_publish_permission, grant
 and grant_with_private_key. view, set_publish_permission, update_publish_permission and grant are called by 
 view/publishing/view.html.erb. grant_with_private_key is called by view/publishing/grant.html.erb. They can
@@ -71,57 +71,57 @@ be veiwed by http://localhost:3000/publishing/grant(view).
 Everything looks fine. We didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
-5. questions_controller
+questions_controller
 
 create and update methods code reuse.
 
 ------------------------------------------------------------------------------------------------------------ 
-6. reports_controller
+reports_controller
 
 Only one method "view". It looks fine.
 
 ------------------------------------------------------------------------------------------------------------ 
-7. roles_controller
+roles_controller
 
 create and update methods code reuse.
 
 ------------------------------------------------------------------------------------------------------------ 
-8. roles_permissions_controller
+roles_permissions_controller
 
 create and update methods code reuse.
 
 ------------------------------------------------------------------------------------------------------------ 
-9. site_controllers_controller
+site_controllers_controller
 
 create and update methods code reuse.
 
 ------------------------------------------------------------------------------------------------------------ 
-10. statistics_controller
+statistics_controller
 It can be viewed by http://localhost:3000/statistics/list, but the view_response and list_survey pages cannot 
 display.
 
 view_responses method inside code reuse! I defined cal_resopnse() for each calculation of responses.
 
 ------------------------------------------------------------------------------------------------------------ 
-11. student_team_controller
+student_team_controller
 
 create and update methods code reuse.
 
 ------------------------------------------------------------------------------------------------------------ 
-12. suggestion_controller
+suggestion_controller
 
 All the method defined in the suggestion_controller are actions and has corresponding html file in the view 
 or called in some of the html file. And it doesn't exhibit code redundant here, so we didn't modify it. 
 
 ------------------------------------------------------------------------------------------------------------
-13. survey_controller
+survey_controller
 
 There is noting to change in the survey controller, only one method, assign, is defined in the controller, 
 and it has the corresponding html file, however, in the view for the survey, there is also a file called 
 list.html.erb, it is completely the same with assign.html.erb, so I think it could be deleted. 
 
 ------------------------------------------------------------------------------------------------------------
-14. survey_deployment_controller
+survey_deployment_controller
 
 (1).move the add method in survey_development_controller to the survey_development model. The method should 
 not be in the controller, it doesn’t mean an action, and there is no corresponding html file in the view for
@@ -136,25 +136,25 @@ ii>@course=Course.find_all_by_instructor_id(session[:user].id).map{|u|[u.name,  
 to u.name, there is no column called title in the table for course. 
 
 ------------------------------------------------------------------------------------------------------------
-15. survey_response_controller
+survey_response_controller
 
 We didn't find any redundant code here, so it's fine here and we didn't make any change. 
 
 ------------------------------------------------------------------------------------------------------------
-16. system_settings_controller
+system_settings_controller
 
 For system setting, the only change that should be done is perhaps to move the foreign method foreign to the
 model of System Setting. However, I didn’t make the change here, the definition of the method foreign reduce 
 the redundant of defining the same variables, so I thinks it’s proper here.
 
 ------------------------------------------------------------------------------------------------------------
-17.  teams_users_controller
+teams_users_controller
 
 There is no redundant here and all the methods defined in the controller have corresponding html file in the 
 view, they are all absolutely actions, so it's fine to define them in the controller. 
 
 ------------------------------------------------------------------------------------------------------------
-18.  tree_display_controller
+tree_display_controller
 
 I define a new method called goto_find(s) to reduce the redundant code in the controller.
   def goto_find(s)
@@ -165,7 +165,7 @@ I define a new method called goto_find(s) to reduce the redundant code in the co
 
 
 ------------------------------------------------------------------------------------------------------------
-19. users_controller
+users_controller
 
 It's fine for users_controller. We didn't find any code redundant part. All the functions defined in the 
 controller are actions and have corresponding html file in the view except two methods, get_role and foreign, 
@@ -173,7 +173,7 @@ however the two methods are private and protected, so we think it's ok to leave 
 they also exhibit code reuse, so it's fine here. 
 
 ------------------------------------------------------------------------------------------------------------
-20.  waitlists_controller
+waitlists_controller
 
 There is no change need to be done for the controller. 
 
