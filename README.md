@@ -2,12 +2,13 @@
          	517 projectE219: Miscellaneous controller cleanup
 
 ************************************************************************************************************
-Team: OSS_projects_WH
-Members: Wei Jia (wjia), Huijun Zhang (hzhang12)
+We have modified some controllers, and add functional tests for controllers that we modified. (Please see
+comments we wrote in code) All modifications are approved by Professor Gehringer. 
 
-************************************************************************************************************
-We have modified some controllers, and add functional test for each controller that we modified. Controllers 
-we have worked on:
+Because we don't change any front page functions, we didn't deploy our work on Heroku, which is also approved
+by Professor Gehringer.
+
+Controllers we have worked on:
 
 1. pg_users_controller
 2. popup_controller
@@ -40,15 +41,14 @@ in pg_users_controller.
 These two methods are not called by any models or views. As a result, we think these code can be deleted.?
 This method creates an entry in the users table.  It is caled from the Add Super-Admin, Add Administrator, 
 Add Instructor, and Add Student functions. The parent field identifies the entity in the users table (e.g.,
- an instructor) that created this entry (e.g., a student).
+an instructor) that created this entry (e.g., a student).
 
 ------------------------------------------------------------------------------------------------------------   
 popup_controller
 There are four methods, team_users_popup, participants_popup, view_review_scores_popup, and reviewer_details 
 popup. Each one of them has its own view page. 
 
-view_review_scores_popup is not called anywhere, so it can't be viewed. The code can be deleted.
-Other 3 methods are called by views/review_mapping/_report.html.erb. They can be viewed by 
+view_review_scores_popup is not called anywhere, so it can't be viewed. Other 3 methods are called by views/review_mapping/_report.html.erb. They can be viewed by 
 http://localhost:3000/review_mapping/review_report/267(or 268).
 
 In popup_controller.rb, we found that there are code duplications in team_users_popup and particapants_popup.
@@ -179,7 +179,7 @@ There is no change need to be done for the controller.
 
 ************************************************************************************************************
 We have added one functional test file for each controller that we modified, and one test case for each
-method that we added, as shown in the code in test/functional folder. 
+method that we added, as shown in the code in test/functional folder.
 
 All tests have passed.
 
