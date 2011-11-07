@@ -19,6 +19,9 @@ class SurveyDeploymentController < ApplicationController
     end
     
     if(@survey_deployment.save)
+    #Originally, there is an add method here, move the add method in survey_development_controller to the 
+    #survey_development model. The method should not be in the controller, it doesn’t mean an action, and there is no 
+    #corresponding html file in the view for survey_development. 
       @survey_deployment.add_participants(@survey_deployment.num_of_students,@survey_deployment.id)
       redirect_to :action=>'list'
      else
@@ -38,9 +41,7 @@ class SurveyDeploymentController < ApplicationController
     end
   end
   
-  #Originally, there is an add method here, move the add method in survey_development_controller to the 
-  #survey_development model. The method should not be in the controller, it doesn’t mean an action, and there is no 
-  #corresponding html file in the view for survey_development. 
+  
    
    def delete
      SurveyDeployment.find(params[:id]).destroy
