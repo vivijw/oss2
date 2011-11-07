@@ -8,6 +8,7 @@ comments we wrote in code) All modifications are approved by Professor Gehringer
 Because we don't change any front page functions, we didn't deploy our work on Heroku, which is also approved
 by Professor Gehringer.
 
+------------------------------------------------------------------------------------------------------------
 Controllers we have worked on:
 
 1. pg_users_controller
