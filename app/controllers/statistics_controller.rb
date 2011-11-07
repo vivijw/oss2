@@ -23,7 +23,7 @@ class StatisticsController < ApplicationController
     @num_responses2=Hash.new
     @t_score=Hash.new  
     @questions.each do |q| # calculate number of responses for each question
-      @num_responses1 = cal_response(@num_responses1, sd_id1, @survey)
+      @num_responses1 = cal_response(@num_responses1, sd_id1, @survey)      #call cal_response to avoid duplication
       @num_responses2 = cal_response(@num_responses1, sd_id1, @survey)
 
       #calculate t-test score for the question
@@ -32,7 +32,7 @@ class StatisticsController < ApplicationController
     
   end
 
-  def cal_response(num_responses, sd_id, survey)
+  def cal_response(num_responses, sd_id, survey)     #define a function to calculate number of responses
       num_responses[q.id]=Hash.new
       total_question_response=SurveyResponse.find_all_by_survey_deployment_id_and_question_id(sd_id,q.id).length
       for i in survey.min_question_score..survey.max_question_score
