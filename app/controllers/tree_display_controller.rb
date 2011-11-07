@@ -1,7 +1,10 @@
 class TreeDisplayController < ApplicationController
   helper :application
   # direct access to questionnaires
-
+  
+  #this function is used to erase the duplicate of the code. Observing the original code, the only differences among 
+  #those goto functions is parameters of node_object = TreeFolder.find_by_name(s), so, here we define another method 
+  #called goto_find(s). 
   def goto_find(s)
     node_object = TreeFolder.find_by_name(s)
     session[:root] = FolderNode.find_by_node_object_id(node_object.id).id
