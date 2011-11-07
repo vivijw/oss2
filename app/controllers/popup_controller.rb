@@ -1,7 +1,7 @@
 class PopupController < ApplicationController
   layout 'standard'
 
-  def getscore(flag,s1, s2)
+  def getscore(flag,s1, s2)      #define a function getscore to reduce code duplication
     @sum = 0
     @count = 0
     @maxscore = 0
@@ -55,7 +55,7 @@ class PopupController < ApplicationController
     @assignment = Assignment.find(@team.parent_id)
     @assignment_id = @assignment.id
     @teamusers = TeamsUser.find_all_by_team_id(params[:id])
-    @sum, @maxscore, @sum1, @scores = getscore(0,params[:id1], params[:id2])
+    @sum, @maxscore, @sum1, @scores = getscore(0,params[:id1], params[:id2])   #call getscore defined above.
   end
 
 
@@ -66,7 +66,7 @@ class PopupController < ApplicationController
     @assignment_id =  Participant.find(params[:id]).parent_id
     @user = User.find(@uid)
     @myuser = @user.id
-    @sum, @maxscore, @sum1, @scores = getscore(1, params[:id], params[:id2])
+    @sum, @maxscore, @sum1, @scores = getscore(1, params[:id], params[:id2])     #call getscore defined above.
   end
 
   def view_review_scores_popup
