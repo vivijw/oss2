@@ -35,27 +35,34 @@ Controllers we have worked on:
 Modification on controllers we have done:
 
 pg_users_controller
+
 The class PgUsersController is inherited from UsersController. There are two methods "create" and "remove_user" 
 in pg_users_controller.
 
-These two methods are not called by any models or views. As a result, we think these code can be deleted.?
-This method creates an entry in the users table.  It is caled from the Add Super-Admin, Add Administrator, 
+
+
+These two methods are not called by any models or views. As a result, we think these code can be deleted.
+This method creates an entry in the users table.  It is called from the Add Super-Admin, Add Administrator,
 Add Instructor, and Add Student functions. The parent field identifies the entity in the users table (e.g.,
 an instructor) that created this entry (e.g., a student).
 
 ------------------------------------------------------------------------------------------------------------   
 popup_controller
+
 There are four methods, team_users_popup, participants_popup, view_review_scores_popup, and reviewer_details 
 popup. Each one of them has its own view page. 
 
-view_review_scores_popup is not called anywhere, so it can't be viewed. Other 3 methods are called by views/review_mapping/_report.html.erb. They can be viewed by 
+view_review_scores_popup is not called anywhere, so it can't be viewed. Other 3 methods are called by 
+views/review_mapping/_report.html.erb. They can be viewed by 
 http://localhost:3000/review_mapping/review_report/267(or 268).
 
 In popup_controller.rb, we found that there are code duplications in team_users_popup and particapants_popup.
-We merge the code into one function, and make two methods call the same function.
+We merge the code into one function "getscore", and make two methods call the same function, this reduced a
+lot of duplication.
 
 ------------------------------------------------------------------------------------------------------------ 
 profile_controller
+
 There are two methods in profile_controller, "edit" and "update". They are called by view/profile/edit.html.erb
 and can be viewed by http://localhost:3000/profile/edit.
 
@@ -63,6 +70,7 @@ Everything looks fine. We didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
 publishing_controller
+ 
 There are four methods in publishing_controller, view, set_publish_permission, update_publish_permission, grant
 and grant_with_private_key. view, set_publish_permission, update_publish_permission and grant are called by 
 view/publishing/view.html.erb. grant_with_private_key is called by view/publishing/grant.html.erb. They can
@@ -73,7 +81,11 @@ Everything looks fine. We didn't modify anything.
 ------------------------------------------------------------------------------------------------------------ 
 questions_controller
 
-create and update methods code reuse.
+There is no related view page, so I cannot decide whether I can move some methods into model. Some methods 
+are called by questionnaire view page.
+
+Method "SignupSheet" can be implemented in the method "list" because the code in them are exactly the same,
+so SignupSheet can be deleted. Method "listuser" is not called by anywhere, it can also be deleted.
 
 ------------------------------------------------------------------------------------------------------------ 
 reports_controller
@@ -83,20 +95,29 @@ Only one method "view". It looks fine.
 ------------------------------------------------------------------------------------------------------------ 
 roles_controller
 
-create and update methods code reuse.
+All methods in roles_controller are called by view pages of roles. It can be viewed by 
+http://localhost:3000/roles/
+
+I didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
 roles_permissions_controller
 
-create and update methods code reuse.
+All methods are called by roles_permissions view pages. But these pages cannot be viewed. 
+
+I didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
 site_controllers_controller
 
-create and update methods code reuse.
+All methods are called by site_controllers_controller view pages. They can be viewed by 
+http://localhost:3000/site_controllers/list
+
+I didn't modify anything.
 
 ------------------------------------------------------------------------------------------------------------ 
 statistics_controller
+
 It can be viewed by http://localhost:3000/statistics/list, but the view_response and list_survey pages cannot 
 display.
 
@@ -105,7 +126,8 @@ view_responses method inside code reuse! I defined cal_resopnse() for each calcu
 ------------------------------------------------------------------------------------------------------------ 
 student_team_controller
 
-create and update methods code reuse.
+The method review is not called by any model or view pages. It can be deleted. Other methods are called by
+student_team view pages, but the pages are broken, so they cannot be viewed.
 
 ------------------------------------------------------------------------------------------------------------ 
 suggestion_controller
