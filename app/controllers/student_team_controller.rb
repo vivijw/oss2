@@ -38,6 +38,7 @@ class StudentTeamController < ApplicationController
   
   def update
     @team = AssignmentTeam.find_by_id(params[:team_id])
+
     check = AssignmentTeam.find(:all, :conditions => ["name =? and parent_id =?", params[:team][:name], @team.parent_id])    
     if (check.length == 0)
        if @team.update_attributes(params[:team])
@@ -100,7 +101,8 @@ class StudentTeamController < ApplicationController
     
     redirect_to :controller => 'student_team', :action => 'view' , :id => @student.id
   end
-  
+
+   #This method is not called by view.
   def review
     @assignment = Assignment.find_by_id(params[:assignment_id])
     redirect_to :controller =>'questionnaire', :action => 'view_questionnaire', :id => @assignment.questionnaires.find_by_type('AuthorFeedbackQuestionnaire').id
