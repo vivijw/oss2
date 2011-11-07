@@ -62,7 +62,9 @@ class SystemSettingsController < ApplicationController
   end
 
   protected
-
+  #It seems that the only change should be made is to move the method foreign to the Model of System Setting, However, 
+  #I didn’t make the change here, the definition of the method foreign reduce the redundant of defining the same 
+  #variables, so I thinks it’s proper here.
   def foreign
     @roles = Role.find(:all, :order => 'name')
     @pages = ContentPage.find(:all, :order => 'name')
